@@ -1,0 +1,3 @@
+<div *ngIf="isClient; then clientHome else adminHome"></div>
+<ng-template #clientHome><app-accounts></app-accounts></ng-template>
+<ng-template #adminHome><app-admin></app-admin></ng-template>

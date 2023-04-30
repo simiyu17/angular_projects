@@ -12,6 +12,13 @@ import { MyProfileComponent } from './banking/my-profile/my-profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { CreateClientComponent } from './client/create-client/create-client.component';
 import { httpInterceptorProvider } from './helper/htt.interceptor';
+import { HomeComponent } from './home/home.component';
+import { DatePipe } from '@angular/common';
+import { AuthGuard } from './utils/auth-guard';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,13 +30,17 @@ import { httpInterceptorProvider } from './helper/htt.interceptor';
     AccountsComponent,
     MyProfileComponent,
     AdminComponent,
-    CreateClientComponent
+    CreateClientComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [httpInterceptorProvider],
+  providers: [httpInterceptorProvider, DatePipe, AuthGuard, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
