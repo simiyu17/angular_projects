@@ -1,36 +1,57 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import User from '../model/User';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { UserRole } from '../model/UserRole';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  endpoint: string = 'http://localhost:8080/api/v1/auth/authenticate';
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {};
-  errorMessage: string = '';
-  constructor(private http: HttpClient, public router: Router) {}
 
-  login(user: User): void {
-    this.http.post(this.endpoint, user)
-    .subscribe((res: any) => {
-      window.sessionStorage.setItem('auth_token', res.authToken);
-    })
-  }
+  USER_ROLE: UserRole = UserRole.NONE;
+  constructor(private router: Router) {}
 
-  doLogout(){
-
-  }
 
   public isAuthenticated(): boolean {
-    const token = window.sessionStorage.getItem('access_token');
+    const token = window.sessionStorage.getItem('auth_token');
 
     if (!token) {
       return false;
     }
 
     return true;
+  }
+
+  public userRole(): UserRole {
+    const user = JSON.parse(window.sessionStorage.getItem('user_details')!);
+    if(user){
+     //this.doLogout();
+      const roles = user['roles'];
+      if(roles.includes(UserRole.ADMIN)){
+        return UserRole.ADMIN;
+      }else if(roles.includes(UserRole.CLIENT)){
+        return UserRole.CLIENT;
+      }
+    }else{
+      this.doLogout();
+    }
+    return UserRole.NONE;
+    
+
+  }
+
+  successfulSigninRedirection(): void {
+    this.USER_ROLE = this.isAuthenticated() ? this.userRole() : UserRole.NONE;
+    if(this.USER_ROLE == UserRole.ADMIN){
+      this.router.navigate(['admin-home']);
+    }else if(this.USER_ROLE == UserRole.CLIENT){
+      this.router.navigate(['my-account']);
+    }
+  }
+
+
+  doLogout(): void {
+    window.sessionStorage.removeItem('auth_token');
+    window.sessionStorage.removeItem('user_details');
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+    this.router.navigate(['login']));
   }
   
 }

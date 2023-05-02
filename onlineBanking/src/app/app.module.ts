@@ -12,13 +12,15 @@ import { MyProfileComponent } from './banking/my-profile/my-profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { CreateClientComponent } from './client/create-client/create-client.component';
 import { httpInterceptorProvider } from './helper/htt.interceptor';
-import { HomeComponent } from './home/home.component';
 import { DatePipe } from '@angular/common';
 import { AuthGuard } from './utils/auth-guard';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminMenuComponent } from './home/admin-menu/admin-menu.component';
+import { ClientMenuComponent } from './home/client-menu/client-menu.component';
+import { NoMenuComponent } from './home/no-menu/no-menu.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MyProfileComponent,
     AdminComponent,
     CreateClientComponent,
-    HomeComponent
+    AdminMenuComponent,
+    ClientMenuComponent,
+    NoMenuComponent
   ],
   imports: [
     BrowserModule,

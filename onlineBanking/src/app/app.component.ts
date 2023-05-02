@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { UserRole } from './model/UserRole';
 
 
 @Component({
@@ -7,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isAuthenticated: boolean = false;
+  constructor(private auth: AuthService){
+    console.log(this.auth.userRole());
+  }
+  USER_ROLE: UserRole = this.auth.isAuthenticated() ? this.auth.userRole() : UserRole.NONE;
 }

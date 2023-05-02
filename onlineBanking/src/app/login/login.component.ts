@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { GlobalService } from '../services/global.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   userloginForm: FormGroup = this.fb.group({});
   invalidLogin = false;
   msg: string = "";
-  constructor(private fb: FormBuilder, private us: UserService,private gs: GlobalService, private router: Router) { 
+  constructor(private fb: FormBuilder, private us: UserService,private gs: GlobalService, private router: Router, private auth: AuthService) { 
     this.createUserloginForm();
   }
 
@@ -25,15 +26,15 @@ export class LoginComponent {
     });
   }
 
-  onUserLoginSubmit() {
+  onUserLoginSubmit(): void {
     this.us.userLogin(this.userloginForm.value).subscribe(data => {
       if (!data['success']) {
         this.invalidLogin = true;
         this.msg = data['msg'];
       } else {
-        console.log(data);
-        window.sessionStorage.setItem('access_token', data['authToken']);
-        this.router.navigate(['home']);
+        window.sessionStorage.setItem('auth_token', data['authToken']);
+        window.sessionStorage.setItem('user_details', JSON.stringify(data['user']));
+        this.auth.successfulSigninRedirection();
       }
     }, error => {
       this.invalidLogin = true;

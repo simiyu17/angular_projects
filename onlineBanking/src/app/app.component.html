@@ -1,3 +1,6 @@
-<div *ngIf="isAuthenticated; then home else login"></div>
-<ng-template #home><app-home></app-home></ng-template>
-<ng-template #login><app-login></app-login></ng-template>
+
+<div [ngSwitch]='USER_ROLE'>
+    <div class="template-home" *ngSwitchCase="'ROLE_ADMIN'"><app-admin-menu></app-admin-menu></div>
+    <div class="template-home" *ngSwitchCase="'ROLE_CLIENT'"><app-client-menu></app-client-menu></div>
+    <div class="template-home" *ngSwitchDefault><app-no-menu></app-no-menu></div>
+</div>

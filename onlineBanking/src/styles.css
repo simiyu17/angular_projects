@@ -1,2 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.main-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px auto 40px;
+    grid-template-areas: "nav-bar" "other-content" "page-footer";
+    margin: 5px auto !important;
+}
+
+
+
+.nav-header nav {
+    grid-area: nav-bar;
+    background: #4d2101;
+    width: 100%;
+}
+
+.main-content {
+    grid-area: other-content;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: auto;
+}
+
+.main-content .router-content {
+    width: 100%;
+    border: 1px #4d2101 solid;
+    border-radius: 5px;
+}
+
+.page-footer {
+    grid-area: page-footer;
+    background: #4d2101;
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.page-footer p {
+    margin: auto;
+}
+
+label.logo {
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+
+.nav-header nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+.nav-header nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+.nav-header nav ul li a {
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+}
+
+.nav-header nav ul li a:active, nav ul li a:hover  {
+    background: #b6805a;
+    transform: .5s;
+}
