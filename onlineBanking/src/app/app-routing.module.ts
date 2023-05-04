@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { MyProfileComponent } from './banking/my-profile/my-profile.component';
 import { LoginComponent } from './login/login.component';
-import { CreateClientComponent } from './client/create-client/create-client.component';
-import { AuthGuard } from './utils/auth-guard';
+import { NotFoundComponent } from './home/not-found/not-found.component';
 
 const routes: Routes = [
-  {path: "admin-home", component: AdminComponent, canActivate: [AuthGuard]},
-  {path: "my-account", component: MyProfileComponent, canActivate: [AuthGuard]},
+  
   {path: "login", component: LoginComponent},
-  {path: "create-client", component: CreateClientComponent, canActivate: [AuthGuard]}
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: "admin", loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+  },
+  {path: "banking", loadChildren: () => import('./modules/banking/banking.module').then(m => m.BankingModule)
+  },
+  {path: "**", component: NotFoundComponent}
 ];
 
 @NgModule({

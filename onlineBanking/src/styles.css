@@ -9,13 +9,21 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .main-container {
+    flex-grow: 1;
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr;
     grid-template-rows: 80px auto 40px;
     grid-template-areas: "nav-bar" "other-content" "page-footer";
     margin: 5px auto !important;
+    min-height: calc(100vh - 10px);
 }
 
 

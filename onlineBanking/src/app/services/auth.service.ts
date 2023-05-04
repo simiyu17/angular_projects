@@ -22,7 +22,6 @@ export class AuthService {
   public userRole(): UserRole {
     const user = JSON.parse(window.sessionStorage.getItem('user_details')!);
     if(user){
-     //this.doLogout();
       const roles = user['roles'];
       if(roles.includes(UserRole.ADMIN)){
         return UserRole.ADMIN;
@@ -40,9 +39,9 @@ export class AuthService {
   successfulSigninRedirection(): void {
     this.USER_ROLE = this.isAuthenticated() ? this.userRole() : UserRole.NONE;
     if(this.USER_ROLE == UserRole.ADMIN){
-      this.router.navigate(['admin-home']);
+      this.router.navigate(['admin']);
     }else if(this.USER_ROLE == UserRole.CLIENT){
-      this.router.navigate(['my-account']);
+      this.router.navigate(['banking']);
     }
   }
 
