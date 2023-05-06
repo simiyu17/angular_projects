@@ -16,7 +16,7 @@
                   <div class="row">
                     <form [formGroup]="userloginForm" control="" class="form-group" novalidate>
                       <div class="row">
-                        <input type="text" name="username" id="username" class="form__input" placeholder="Enter email address" formControlName="username">
+                        <input #usernameRef type="text" name="username" id="username" class="form__input" placeholder="Enter email address" formControlName="username">
                       </div>
                       <div class="row">
                         <input type="password" name="password" id="password" class="form__input" placeholder="Enter Password" formControlName="password">

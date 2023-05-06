@@ -36,12 +36,14 @@ export class AuthService {
 
   }
 
-  successfulSigninRedirection(): void {
+  userRedirection(): void {
     this.USER_ROLE = this.isAuthenticated() ? this.userRole() : UserRole.NONE;
     if(this.USER_ROLE == UserRole.ADMIN){
       this.router.navigate(['admin']);
     }else if(this.USER_ROLE == UserRole.CLIENT){
       this.router.navigate(['banking']);
+    }else {
+      this.doLogout();
     }
   }
 

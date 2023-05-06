@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { GlobalService } from '../services/global.service';
@@ -10,13 +10,18 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
 
   userloginForm: FormGroup = this.fb.group({});
   invalidLogin = false;
   msg: string = "";
+  @ViewChild('usernameRef') usernameElementRef: ElementRef = {} as ElementRef;
   constructor(private fb: FormBuilder, private us: UserService,private gs: GlobalService, private router: Router, private auth: AuthService) { 
     this.createUserloginForm();
+  }
+
+  ngAfterViewInit(): void {
+      this.usernameElementRef.nativeElement.focus();
   }
 
   createUserloginForm(): void {
@@ -34,7 +39,7 @@ export class LoginComponent {
       } else {
         window.sessionStorage.setItem('auth_token', data['authToken']);
         window.sessionStorage.setItem('user_details', JSON.stringify(data['user']));
-        this.auth.successfulSigninRedirection();
+        this.auth.userRedirection();
       }
     }, error => {
       this.invalidLogin = true;
@@ -48,7 +53,7 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
-   
+    this.auth.userRedirection();
   }
 
 }

@@ -16,6 +16,8 @@ import { AdminMenuComponent } from './home/admin-menu/admin-menu.component';
 import { ClientMenuComponent } from './home/client-menu/client-menu.component';
 import { NoMenuComponent } from './home/no-menu/no-menu.component';
 import { NotFoundComponent } from './home/not-found/not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { NotFoundComponent } from './home/not-found/not-found.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ],
   providers: [httpInterceptorProvider, DatePipe, AuthGuard, AuthService, UserService],
   bootstrap: [AppComponent]

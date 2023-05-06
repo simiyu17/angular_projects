@@ -21,7 +21,7 @@ body {
     gap: 10px;
     grid-template-columns: 1fr;
     grid-template-rows: 80px auto 40px;
-    grid-template-areas: "nav-bar" "other-content" "page-footer";
+    grid-template-areas: "nav-bar" "main-content" "page-footer";
     margin: 5px auto !important;
     min-height: calc(100vh - 10px);
 }
@@ -30,28 +30,30 @@ body {
 
 .nav-header nav {
     grid-area: nav-bar;
-    background: #4d2101;
+    background: #a06438;
     width: 100%;
 }
 
 .main-content {
-    grid-area: other-content;
+    grid-area: main-content;
     width: 90%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     margin: auto;
+    position: relative;
 }
 
 .main-content .router-content {
     width: 100%;
-    border: 1px #4d2101 solid;
+    border: 1px #a06438 solid;
     border-radius: 5px;
 }
 
 .page-footer {
     grid-area: page-footer;
-    background: #4d2101;
+    background: #a06438;
     width: 100%;
     color: white;
     display: flex;
@@ -94,3 +96,5 @@ label.logo {
     background: #b6805a;
     transform: .5s;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
