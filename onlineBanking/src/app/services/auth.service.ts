@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserRole } from '../model/UserRole';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
   USER_ROLE: UserRole = UserRole.NONE;
+  jwtService: JwtHelperService = new JwtHelperService();
   constructor(private router: Router) {}
 
 
   public isAuthenticated(): boolean {
     const token = window.sessionStorage.getItem('auth_token');
 
-    if (!token) {
+    if (!token || this.jwtService.isTokenExpired(token)) {
       return false;
     }
 

@@ -15,4 +15,8 @@ export class ClientService {
   getAllClients(): Observable<any> {
     return this.httpClient.get(`${this.glService.BASE_ADMIN_ENDPOINT}/clients`);
   }
+
+  getAllClientById(clientId: number): Observable<any> {
+    return this.httpClient.get(`${this.glService.BASE_ADMIN_ENDPOINT}/clients/${clientId}`);
+  }
 }

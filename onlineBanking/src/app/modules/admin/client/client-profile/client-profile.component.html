@@ -1,0 +1,39 @@
+<div class="client-profile-content">
+    <mat-toolbar>
+        <span>{{clientName}}'s Profile</span>
+        <span class="client-toolbar-spacer"></span>
+
+        <div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>dialpad</mat-icon>
+                    <span>Add Account</span>
+                </button>
+                <button mat-menu-item disabled>
+                    <mat-icon>voicemail</mat-icon>
+                    <span>Suspend Client</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>notifications_off</mat-icon>
+                    <span>Disable alerts</span>
+                </button>
+            </mat-menu>
+        </div>
+    </mat-toolbar>
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="General">
+            <div class="example-small-box mat-elevation-z4">
+                Small content
+            </div>
+        </mat-tab>
+        <mat-tab label="Client Accounts">
+            <div class="client-accounts">
+                <app-accounts [clientId]="clientId"></app-accounts>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

@@ -1,0 +1,38 @@
+.example-small-box, .example-large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .example-small-box {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .example-large-box {
+    height: 300px;
+    width: 300px;
+  }
+
+  .client-toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.client-profile-content mat-toolbar {
+    border-bottom: 1px #a06438 solid;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.client-profile-content mat-toolbar button {
+    border: 1px #a06438 solid;
+}
+
+.client-profile-content mat-toolbar button:hover {
+    border: 1px black solid;
+    background-color: #a06438;
+    color: aliceblue;
+}

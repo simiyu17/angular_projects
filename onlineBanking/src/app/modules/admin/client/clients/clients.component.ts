@@ -6,6 +6,7 @@ import { ClientDto } from '../../dto/ClientDto';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
@@ -21,7 +22,7 @@ export class ClientsComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   clients: ClientDto[] = [];
-  constructor(public dialog: MatDialog, private clientService: ClientService) { }
+  constructor(public dialog: MatDialog, private clientService: ClientService, private router: Router) { }
   openNewClientDialog() {
     const dialogRef = this.dialog.open(CreateClientComponent);
 
@@ -63,6 +64,10 @@ export class ClientsComponent {
 
   ngOnInit(): void {
     this.getAvailableClients();
+  }
+
+  openClientProfile(clientId: any){
+    this.router.navigate(['/admin/clients', clientId])
   }
 
 }

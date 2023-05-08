@@ -16,6 +16,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatMenuModule} from '@angular/material/menu';
+import { ClientProfileComponent } from './client/client-profile/client-profile.component';
+import { BankingModule } from '../banking/banking.module';
 
 
 
@@ -23,7 +27,8 @@ import { MatSortModule } from '@angular/material/sort';
   declarations: [
     ClientsComponent,
     CreateClientComponent,
-    AdminComponent
+    AdminComponent,
+    ClientProfileComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +44,10 @@ import { MatSortModule } from '@angular/material/sort';
     MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTabsModule,
+    MatMenuModule,
+    BankingModule
   ]
 })
 export class AdminModule { }

@@ -1,83 +1,81 @@
 <div class="clients-content">
-   
-    <div class="client-table">
-        <mat-toolbar>
-            <span>Clients</span>
-            <span class="client-toolbar-spacer"></span>
-            <button mat-raised-button (click)="openNewClientDialog()">
-                Add New Client
+
+  <div class="clients-table-content">
+    <mat-toolbar>
+      <span>Clients</span>
+      <span class="client-toolbar-spacer"></span>
+      <button mat-raised-button (click)="openNewClientDialog()">
+        Add New Client
+      </button>
+    </mat-toolbar>
+
+    <div class="clients-table">
+      <mat-form-field>
+        <mat-label>Filter by: Name/Id Number/Passport Number/Phone Number/Email</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Type Here" #input>
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="clientGovernmentId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID/Passport Number </th>
+          <td mat-cell *matCellDef="let row"> {{row.clientGovernmentId}} </td>
+        </ng-container>
+
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+        </ng-container>
+
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+        </ng-container>
+
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+          <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="cellPhone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cell Phone Number </th>
+          <td mat-cell *matCellDef="let row"> {{row.cellPhone}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="emailAddress">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Address </th>
+          <td mat-cell *matCellDef="let row"> {{row.emailAddress}} </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button (click)="openClientProfile(row.id)">
+              <mat-icon>output</mat-icon>
             </button>
-          </mat-toolbar>
+          </td>
+        </ng-container>
 
-          <div class="clients-table">
-          <mat-form-field>
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-          </mat-form-field>
-          
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort>
-          
-              <!-- ID Column -->
-              <ng-container matColumnDef="clientGovernmentId">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID/Passport Number </th>
-                <td mat-cell *matCellDef="let row"> {{row.clientGovernmentId}} </td>
-              </ng-container>
-          
-              <!-- First Name Column -->
-              <ng-container matColumnDef="firstName">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
-                <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
-              </ng-container>
-          
-              <!-- Last Name Column -->
-              <ng-container matColumnDef="lastName">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
-                <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
-              </ng-container>
-          
-              <!-- Gender Column -->
-              <ng-container matColumnDef="gender">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
-                <td mat-cell *matCellDef="let row"> {{row.gender}} </td>
-              </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-              <!-- Phone Column -->
-              <ng-container matColumnDef="cellPhone">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cell Phone Number </th>
-                <td mat-cell *matCellDef="let row"> {{row.cellPhone}} </td>
-              </ng-container>
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
 
-              <!-- Email Column -->
-              <ng-container matColumnDef="emailAddress">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Address </th>
-                <td mat-cell *matCellDef="let row"> {{row.emailAddress}} </td>
-              </ng-container>
+      <mat-paginator [pageSizeOptions]="[1, 5, 10, 25, 100]" aria-label="Select page of clients"></mat-paginator>
 
-              <!-- Action Column -->
-              <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
-                <td mat-cell *matCellDef="let row"> 
-                    <button mat-icon-button>
-                        <mat-icon>output</mat-icon>
-                    </button>
-                </td>
-              </ng-container>
-          
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          
-              <!-- Row shown when there is no matching data. -->
-              <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-              </tr>
-            </table>
-          
-            <mat-paginator [pageSizeOptions]="[1, 5, 10, 25, 100]" aria-label="Select page of clients"></mat-paginator>
-          </div>
-          
-          
-          </div>
-       
+
     </div>
+
+  </div>
 </div>
