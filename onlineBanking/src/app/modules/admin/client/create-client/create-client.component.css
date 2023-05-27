@@ -1,9 +1,17 @@
 .create-new-client-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto;
+    min-width: 1000px;
+    max-width: 1500px;
+}
+
+.create-new-client-content .form-header {
+    border: 2px red solid;
+}
+
+.create-new-client-content form .form-btns{
+    border: 2px red solid;
 }
 
 .form-fields {
@@ -13,18 +21,20 @@
     align-items: center;
     width: 100%;
     padding-top: 10px;
+    border: 2px red solid;
 }
 
 .form-row {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    border: 2px red solid;
 }
 
-.form-row mat-form-field{
- width: 49%;
+.form-row mat-form-field {
+    width: 49%;
 }
 
 mat-form-field {
     margin-right: 12px;
-  }
+}

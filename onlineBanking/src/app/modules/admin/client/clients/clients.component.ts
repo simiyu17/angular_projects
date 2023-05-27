@@ -21,7 +21,7 @@ export class ClientsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  clients: ClientDto[] = [];
+  clients?: ClientDto[];
   constructor(public dialog: MatDialog, private clientService: ClientService, private router: Router) { }
   openNewClientDialog() {
     const dialogRef = this.dialog.open(CreateClientComponent);

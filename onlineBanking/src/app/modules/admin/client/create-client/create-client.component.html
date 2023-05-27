@@ -2,6 +2,7 @@
   <div mat-dialog-title class="form-header">
     <h2>New Client</h2>
   </div>
+  <div>
   <form [formGroup]="createClientForm" (ngSubmit)="onSubmitNewClient()">
   <div mat-dialog-content class="form-fields">
     <div class="form-row">
@@ -47,4 +48,5 @@
     <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial type="submit">Submit</button>
   </div>
 </form>
+</div>
 </div>

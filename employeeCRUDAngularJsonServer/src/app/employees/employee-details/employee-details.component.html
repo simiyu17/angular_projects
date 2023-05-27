@@ -1,0 +1,88 @@
+<div *ngIf="employee" class="employee-details">
+  <h2 mat-dialog-title>{{emplFullName}}'s Details</h2>
+  <mat-dialog-content>
+
+    <mat-card class="employee-img">
+      <mat-card-content>
+        <img mat-card-image [src]="employeeProfileImg" [alt]="emplFullName">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptates id explicabo quaerat sequi quisquam
+          unde inventore culpa accusamus ad pariatur sunt, asperiores neque blanditiis. Incidunt error doloribus nobis
+          natus</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="employee-profile">
+      <mat-card-content>
+        <div class="employee-attr">
+          <div class="attr-key">Employee Number</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">EMPL-{{employee.id}}</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">First Name</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">{{employee.firstName}}</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">Last Name</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">{{employee.lastName}}</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">Gender</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">{{employee.gender}}</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">Date Of Birth</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">{{emplDOB}}</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">Cell Phone</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">{{employee.cellPhone}}</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">Email Address</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">{{employee.email}}</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">Department</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">Sales Department</div>
+        </div>
+        <div class="employee-attr">
+          <div class="attr-key">Reports to</div>
+          <span>
+            <mat-icon>double_arrow</mat-icon>
+          </span>
+          <div class="attr-value">Daniel Simiyu</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+
+</div>

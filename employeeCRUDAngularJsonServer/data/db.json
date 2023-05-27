@@ -1,0 +1,22 @@
+{
+  "employees": [
+    {
+      "id": 10001,
+      "firstName": "Daniel",
+      "lastName": "Simiyu",
+      "dateOfBirth": "1988-07-17",
+      "gender": "Male",
+      "cellPhone": "734586975",
+      "email": "daniel.simiyu@gmail.com"
+    },
+    {
+      "id": 10002,
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "gender": "Female",
+      "dateOfBirth": "2005-01-18",
+      "cellPhone": "722345678",
+      "email": "jane@yahoo.com"
+    }
+  ]
+}

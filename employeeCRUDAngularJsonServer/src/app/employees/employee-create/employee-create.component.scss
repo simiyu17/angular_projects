@@ -1,0 +1,72 @@
+
+$primaryColor: rgb(30, 144, 210);
+
+.create-employee-form {
+    width: 1000px;
+
+    h2 {
+        width: 100%;
+        height: 40px;
+        background-color: $primaryColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    mat-dialog-content {
+        width: 100%;
+
+        form {
+            width: 100%;
+            margin: 10px;
+
+            .hidden-employee-id {
+                visibility: hidden;
+                height: 1px;
+            }
+
+            .form-row {
+                width: 100%;
+                display: flex;
+                gap: 20px;
+                margin-top: 10px;
+
+                mat-form-field {
+                    width: 49%;
+                }
+            }
+
+            mat-dialog-actions {
+                display: flex;
+                gap: 10px;
+                button {
+                    width: 100px;
+                    height: 50px;
+                    border-radius: 5px;
+                    color: white;
+                    transition: 0.3s;
+                }
+
+                button:nth-child(1) {
+                    border: 1px black solid;
+                    background-color: gray;
+                }
+
+                button:nth-child(2) {
+                    border: 1px black solid;
+                    background-color: $primaryColor;
+                }
+
+                button:hover {
+                    border-radius: 20px;
+                    cursor: pointer;
+                }
+            }
+
+
+            
+            
+        }
+    }
+}

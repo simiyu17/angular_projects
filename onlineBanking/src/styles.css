@@ -47,8 +47,8 @@ body {
 
 .main-content .router-content {
     width: 100%;
-    border: 1px #a06438 solid;
     border-radius: 5px;
+    box-shadow: 0px 1px 10px 1px #a06438;
 }
 
 .page-footer {

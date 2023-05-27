@@ -1,0 +1,40 @@
+{
+  "employees": [
+    {
+      "id": 10001,
+      "firstName": "Daniel",
+      "lastName": "Simiyu",
+      "dateOfBirth": "1988-07-17",
+      "gender": "Male",
+      "cellPhone": "734586975",
+      "email": "daniel.simiyu@gmail.com"
+    },
+    {
+      "id": 10002,
+      "firstName": "Sams",
+      "lastName": "Thomassd",
+      "gender": "Female",
+      "dateOfBirth": "1974-06-04",
+      "cellPhone": "676545654",
+      "email": "h@gmail.com"
+    },
+    {
+      "id": 10003,
+      "firstName": "fgf",
+      "lastName": "Dan",
+      "gender": "Female",
+      "dateOfBirth": "1997-03-06",
+      "cellPhone": "847364734",
+      "email": "ff@yahoo.com"
+    },
+    {
+      "id": 10005,
+      "firstName": "new",
+      "lastName": "new",
+      "gender": "Female",
+      "dateOfBirth": "1990-04-09",
+      "cellPhone": "56454565",
+      "email": "gh@fg.kl"
+    }
+  ]
+}

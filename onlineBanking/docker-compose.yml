@@ -1,0 +1,14 @@
+---
+version: '3.5'
+
+services:
+  online-bank-web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4200:80'
+    environment:
+      - BACKEND_API_URL=http://localhost:8080
+      - BACKEND_API_PROVIDER=/api
+      - BACKEND_API_VERSION=/v1

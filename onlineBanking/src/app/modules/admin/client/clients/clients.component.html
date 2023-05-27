@@ -43,7 +43,7 @@
 
         <!-- Phone Column -->
         <ng-container matColumnDef="cellPhone">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cell Phone Number </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
           <td mat-cell *matCellDef="let row"> {{row.cellPhone}} </td>
         </ng-container>
 
@@ -72,7 +72,7 @@
         </tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[1, 5, 10, 25, 100]" aria-label="Select page of clients"></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[1, 5, 10]" aria-label="Select page of clients"></mat-paginator>
 
 
     </div>
